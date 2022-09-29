@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(90, 235, 138);
+}
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 25px;
+  border: none;
+}
+input[type="color"]::-moz-color-swatch {
+  border-radius: 25px;
+  border: none;
+}
+input[type="number"] {
+  width: 55px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  outline: none;
+}

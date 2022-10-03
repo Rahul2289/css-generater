@@ -7,7 +7,7 @@ import {
   setRightPercentage,
   resetAll,
 } from "../features/BackgroundSlice.js";
-
+import hexRgb from "hex-rgb";
 import FilterCard from "./../utils/FilterCard";
 import ClipBaordCard from "./../utils/ClipBaordCard";
 import Input from "./../utils/Input";
@@ -16,13 +16,19 @@ const Background = () => {
   const bg = useSelector((state) => state.background);
   const dispatch = useDispatch();
 
+  const color1 = hexRgb(bg.backgroundColor);
+  const color2 = hexRgb(bg.backgroundColorR);
+
+  const bgColor1 = `rgb(${color1.red},${color1.green},${color1.blue},${color1.alpha})`;
+  const bgColor2 = `rgb(${color2.red},${color2.green},${color2.blue},${color2.alpha})`;
+
   return (
-    <div className="bg-green-500 max-w-7xl m-auto px-2 pb-2 pt-7 min-h-[calc(100vh-3.5rem)] flex flex-col justify-evenly items-center ">
+    <div className="bg-green-500 max-w-7xl m-auto px-2 pb-2 pt-7 min-h-[calc(100vh-3.5rem)] flex flex-col justify-evenly items-center space-y-2">
       {/* background */}
       <div
         className="bg-white w-11/12 m-auto h-56 rounded-md "
         style={{
-          background: `linear-gradient(${bg.degree}deg, ${bg.backgroundColor}, ${bg.LeftPercentage}%, ${bg.backgroundColorR} ${bg.RightPercentage}%)`,
+          background: `linear-gradient(${bg.degree}deg, ${bgColor1}, ${bg.LeftPercentage}%, ${bgColor2} ${bg.RightPercentage}%)`,
         }}
       ></div>
       {/* filters */}
@@ -75,7 +81,7 @@ const Background = () => {
       {/* clipboard */}
       <ClipBaordCard className="p-3 text-white bg-green-700 w-11/12 m-auto min-h-min rounded-md">
         <code>
-          {` background:linear-gradient(${bg.degree}deg, ${bg.backgroundColor}, ${bg.LeftPercentage}%, ${bg.backgroundColorR} ${bg.RightPercentage}%)`}
+          {` background:linear-gradient(${bg.degree}deg, ${bgColor1}, ${bg.LeftPercentage}%, ${bgColor2} ${bg.RightPercentage}%)`}
           ;
         </code>
       </ClipBaordCard>

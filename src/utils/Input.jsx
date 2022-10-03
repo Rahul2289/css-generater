@@ -11,7 +11,9 @@ const Input = (props) => {
         min={props.min}
         max={props.max}
       />
-      <span className="text-white">{props.value}</span>
+      {props.type === "range" && (
+        <span className="text-white">{props.value}</span>
+      )}
     </div>
   );
 };
